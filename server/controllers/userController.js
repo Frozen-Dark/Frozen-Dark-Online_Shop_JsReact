@@ -38,9 +38,9 @@ class UserController {
         let comparePassword = bcrypt.compareSync(password, user.password)
         if (!comparePassword) {
             return next(ApiError.internal("Указан неверный пароль"))
-            const token = generateJwt(user.id, user.email, user.role)
-            return res.json({token})
         }
+        const token = generateJwt(user.id, user.email, user.role)
+        return res.json({token})
     }
 
     async check(req, res, next) {

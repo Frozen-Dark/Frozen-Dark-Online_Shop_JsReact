@@ -20,7 +20,7 @@ class UserController {
         }
         const candidate = await User.findOne({where: {email}})
         if(candidate) {
-            return next(ApiError.badRequest('Пользователь с такой почто уже существует'))
+            return next(ApiError.badRequest('Пользователь с такой почтой уже существует'))
         }
         const hashPassword = await bcrypt.hash(password, 5)
         const user = await User.create({email, role, password: hashPassword})
@@ -44,11 +44,8 @@ class UserController {
     }
 
     async check(req, res, next) {
-        const {id} = req.query
-        if(!id) {
-            return next(ApiError.badRequest('Не задан ID'))
-        }
-        res.json(id)
+        const token = generateJwt(req.user.id, req.user.email, req.user.role)
+        return res.json({token})
     }
 }
 

@@ -15,7 +15,7 @@ const Auth = () => {
             style={{height: window.innerHeight - 70}}
         >
             <Card style={{width: 600}} className="p-5">
-                <h2 className="m-auto mb-4">Авторизация</h2>
+                <h2 className="m-auto mb-4">{isLogin? 'Авторизация' : 'Регистрация'}</h2>
                 <Form className="d-flex flex-column">
                     <Form.Control
                         className="mt-2"
@@ -26,14 +26,20 @@ const Auth = () => {
                         placeholder="Введите ваш пароль..."
                    />
                     <Form className="d-flex justify-content-between mt-3 pl-3 pr-3  mt-4">
-                        <div>
-                            Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
-                        </div>
+                        {isLogin ?
+                            <div>
+                                Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
+                            </div>
+                            :
+                            <div>
+                                Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
+                            </div>
+                        }
                         <Button
                             variant={"outline-success"}
                             className="align-self-end"
                         >
-                            Войти
+                            {isLogin ? 'Войти' : 'Регистрация'}
                         </Button>
                     </Form>
                 </Form>

@@ -1,10 +1,21 @@
 import React from 'react';
+import {Col, Container} from "react-bootstrap";
 
 const DevicePage = () => {
     return (
-        <div>
-            Device page
-        </div>
+        <Container>
+            <Col md={4}>
+
+            </Col>
+
+            <Col md={4}>
+
+            </Col>
+
+            <Col md={4}>
+
+            </Col>
+        </Container>
     );
 };
 

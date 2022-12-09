@@ -11,7 +11,7 @@ const BrandBar = observer( () => {
                     <Card
                         key={brand.id}
                         variant={"outline-success"}
-                        className="align-self-end"
+                        style={{width: "auto", padding: "10px"}}
                         border={brand.id === device.selectedBrand.id ? "danger" : "light"}
                         onClick={() => device.setSelectedBrand(brand)}
                     >
